@@ -4,6 +4,7 @@ source $VIMRUNTIME/macros/matchit.vim
 let b:match_ignorecase = 1
 " }}}
 
+
 " usability {{{
 " set t_Co=256は256色対応のターミナルソフトでのみ作用するので、Winのコマンドプロンプト使っている人などは ダブルコーテーションでコメントアウトしといて
 set t_Co=256
