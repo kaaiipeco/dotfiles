@@ -1,3 +1,37 @@
+"dein Scripts-----------------------------
+if &compatible
+"  set nocompatible               " Be iMproved
+  endif
+
+" Required:
+set runtimepath+=~/.vim/bundle/repos/github.com/Shougo/dein.vim
+
+" Required:
+call dein#begin('~/.vim/bundle')
+
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
+" Add or remove your plugins here:
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+
+" You can specify revision/branch/tag.
+call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+" Required:
+call dein#end()
+
+" Required:
+filetype plugin indent on
+
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
+
+"End dein Scripts-------------------------
 
 " matchit {{{
 " if や for などの文字にも%で移動できるようになる
@@ -12,10 +46,15 @@ syntax enable
 " set t_Co=256は256色対応のターミナルソフトでのみ作用するので、Winのコマンドプロンプト使っている人などは ダブルコーテーションでコメントアウトしといて
 set t_Co=256
 "solarized dark theme つかうよ
+let g:solarized_termtrans=1
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
+"エラー時の音とヴィジュアルベルを抑制
+set noerrorbells
+set novisualbell
+set visualbell t_vb=
 " ターミナルの右端で文字を折り返さない
 set nowrap
 " tempファイルを作らない。編集中に電源落ちまくるし、とかいう人はコメントアウトで
@@ -58,6 +97,7 @@ imap <C-j> <esc>
 imap [ []<left>
 imap ( ()<left>
 imap { {}<left>
+imap < <><left>
 " ２回esc を押したら検索のハイライトをヤメる
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 " }}}
