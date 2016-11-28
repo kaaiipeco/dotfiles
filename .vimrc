@@ -15,9 +15,11 @@ syntax enable
 " 今のところ好きなカラースキーマを使っていて大丈夫。
 "colorscheme desert
 
+"solarized dark theme つかうよ
 let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
+
 " ターミナルの右端で文字を折り返さない
 set nowrap
 
