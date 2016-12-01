@@ -1,17 +1,20 @@
-#なんかすごいやつ
+#すごい
 autoload -U compinit
 compinit
 
-#環境変数LANG?まだちゃんとりかいしていない
+#環境変数LANG
 export LANG=ja_JP.UTF-8
-#なんかさいしんのvimをつかえるようにする
-export PATH=“/usr/local/bin:$PATH”
 
 #エイリアス
+alias ls='gls --color=auto'
 alias ll='ls -la'
 alias vi='vim'
-alias ls='gls --color=auto'
 alias cdde='cd ~/Desktop'
 
-#ターミナルのテーマにひつようなやつ
-eval $(gdircolors ~/terminalSettings/solarized/dircolors-solarized-master/dircolors.ansi-universal)
+#プロンプト
+autoload -Uz colors; colors
+PROMPT="%{$fg[green]%} [%m$] %{${reset_color}%}"
+RPROMPT=[%~]
+
+#Solarized カラー設定
+eval $(gdircolors ~/solarized/dircolors-solarized/dircolors.ansi-dark)
