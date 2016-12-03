@@ -89,11 +89,18 @@ set mouse=a
 set nobackup
 ".swapファイルを作らない
 set noswapfile
+".vimrcを変更したら自動で反映
+" auto reload .vimrc
+augroup source-vimrc
+  autocmd!
+  autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
+  autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
+  augroup END
 
 "#####キーマップ変更#####
 "---インサートモード{{{
 "インサートモード時にC-jでノーマルモードへ
-inoremap <C-j> <esc><right>
+inoremap <C-[> <esc>
 "括弧を入力したら閉じ括弧もされて中にいる
 inoremap [ []<left>
 inoremap ( ()<left>
@@ -102,6 +109,8 @@ inoremap ' ''<left>
 "}}}
 
 "---ノーマルモード{{{
+";を:に
+nnoremap ; :
 "2回escを入力したら検索のハイライトをやめる
 nnoremap <Esc><Esc> :nohlsearch<CR><Esc>
 "ウィンドウの分割:横割り
