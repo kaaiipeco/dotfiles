@@ -17,7 +17,7 @@ set visualbell t_vb=
 "カーソルライン表示
 "set cursorline
 "相対行番号表示
-set relativenumber
+set number
 "コマンドを最下部に表示する
 set showcmd
 "上下n行分の視界を確保
@@ -80,6 +80,7 @@ set statusline+=%y
 "タブラインを常に表示
 set showtabline=2
 "}}}
+
 "#####その他設定#####
 "クリップボードを共有
 set clipboard=unnamed
@@ -90,7 +91,6 @@ set nobackup
 ".swapファイルを作らない
 set noswapfile
 ".vimrcを変更したら自動で反映
-" auto reload .vimrc
 augroup source-vimrc
   autocmd!
   autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
