@@ -143,3 +143,8 @@ nnoremap sp gT
 "バッファを閉じる
 nnoremap sQ :<C-u>bd<CR>
 "}}}
+
+"####プラグイン設定#####
+"プラグインが実際にインストールされるディレクトリ
+"let s:dein_dir = expand('~/.cashe/dein')
+
