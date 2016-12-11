@@ -1,3 +1,31 @@
+"#####dein#####
+"{{{
+"required
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+call dein#begin('~/.vim/dein')
+call dein#add('Shougo/dein.vim')
+
+"Add or remove your pugin here:
+call dein#add('mattn/emmet-vim')
+
+"required
+call dein#end()
+
+if dein#check_install()
+	call dein#install()
+endif
+"End dein scripts}}}
+"
+"---プラグイン設定{{{
+"emmet
+let g:user_emmet_leader_key='<c-e>'
+let g:user_emmet_settings = {
+\	'variables' : {
+\	'lang' : "ja"
+\	},
+\	'identation' : ' ',
+\}
+"}}}
 "#####表示設定#####
 "---カラー設定{{{
 syntax on
@@ -82,6 +110,10 @@ set showtabline=2
 "}}}
 
 "#####その他設定#####
+"{{{
+"ファイルタイプ検出
+filetype on
+filetype plugin indent on
 "クリップボードを共有
 set clipboard=unnamed
 "マウスを有効にする
@@ -91,16 +123,17 @@ set nobackup
 ".swapファイルを作らない
 set noswapfile
 ".vimrcを変更したら自動で反映
-augroup source-vimrc
-  autocmd!
-  autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
-  autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
-  augroup END
+"augroup source-vimrc
+"  autocmd!
+"  autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
+"  autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
+"  augroup END
+"}}}
 
 "#####キーマップ変更#####
 "---インサートモード{{{
 "インサートモード時にC-jでノーマルモードへ
-inoremap <C-[> <esc>
+inoremap <C-j> <esc>
 "括弧を入力したら閉じ括弧もされて中にいる
 inoremap [ []<left>
 inoremap ( ()<left>
@@ -143,8 +176,4 @@ nnoremap sp gT
 "バッファを閉じる
 nnoremap sQ :<C-u>bd<CR>
 "}}}
-
-"####プラグイン設定#####
-"プラグインが実際にインストールされるディレクトリ
-"let s:dein_dir = expand('~/.cashe/dein')
 
