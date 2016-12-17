@@ -42,9 +42,7 @@ set novisualbell
 set visualbell t_vb=
 "}}}
 
-"カーソルライン表示
-"set cursorline
-"相対行番号表示
+"行番号表示
 set number
 "コマンドを最下部に表示する
 set showcmd
