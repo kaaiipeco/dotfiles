@@ -26,16 +26,16 @@ setopt no_beep
 
 #プロンプト
 #autoload -Uz colors; colors
-#PROMPT="%{$fg[green]%} [%m$] %{${reset_color}%}"
+PROMPT='%F{green} [%m] %f'
 RPROMPT=[%~]
-SPROMPT="%F{red}Did you mean?: %R -> %r [nyae]?%f"
+#SPROMPT="%F{red}Did you mean?: %R -> %r [nyae]?%f"
 #vim風味
-function zle-line-init zle-keymap-select {
+#function zle-line-init zle-keymap-select {
 
-	VIM_NORMAL="%K{blue}%F{white} N %f%k%F{blue}[%m]$%f"
-	VIM_INSERT="%K{green}%F{white} I %f%k%F{green}[%m]\$%f"
-	PS1="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
-	PS2=$PS1
+#	VIM_NORMAL="%K{blue}%F{white} N %f%k%F{blue}[%m]$%f"
+#	VIM_INSERT="%K{green}%F{white} I %f%k%F{green}[%m]\$%f"
+#	PS1="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
+#	PS2=$PS1
 
 #	case $KEYMAP in
 #		vicmd)
@@ -46,10 +46,10 @@ function zle-line-init zle-keymap-select {
 #		;;
 #	esac
 
-	zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
+#	zle reset-prompt
+#}
+#zle -N zle-line-init
+#zle -N zle-keymap-select
 
 #Solarized カラー設定
 eval $(gdircolors ~/solarized/dircolors-solarized/dircolors.ansi-dark)
