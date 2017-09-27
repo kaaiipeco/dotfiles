@@ -3,8 +3,8 @@ autoload -U compinit
 compinit -d ~/.zcompdump
 
 #vim風味
-bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
+#bindkey -v
+#bindkey -M viins 'jj' vi-cmd-mode
 #環境変数LANG
 export LANG=ja_JP.UTF-8
 #入力したコマンドが存在せず、かつディレクトリ名と一致するなら自動でcd
@@ -26,7 +26,8 @@ setopt no_beep
 
 #プロンプト
 #autoload -Uz colors; colors
-PROMPT='%F{green} [%m] %f'
+#PROMPT='%F{green} [%m] %f'
+PROMPT='%F{green} » %f'
 RPROMPT=[%~]
 #SPROMPT="%F{red}Did you mean?: %R -> %r [nyae]?%f"
 #vim風味

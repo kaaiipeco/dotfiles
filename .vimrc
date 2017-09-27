@@ -7,16 +7,17 @@ call dein#add('Shougo/dein.vim')
 
 "Add or remove your pugin here:
 call dein#add('mattn/emmet-vim')
-call dein#add('OmniSharp/omnisharp-vim', { 
-	\ 'autoload':{ 'filetypes':['cs', 'csi', 'csx'] },
-	\ 'build':{
-	\	'windows':'msbuild server/OmniSharp.sln',
-	\	'mac':'xbuild server/OmniSharp.sln',
-	\	'unix':'xbuild server/OmniSharp.sln',
-	\ },
-	\})
+"call dein#add('OmniSharp/omnisharp-vim', { 
+"	\ 'autoload':{ 'filetypes':['cs', 'csi', 'csx'] },
+"	\ 'build':{
+"	\	'windows':'msbuild server/OmniSharp.sln',
+"	\	'mac':'xbuild server/OmniSharp.sln',
+"	\	'unix':'xbuild server/OmniSharp.sln',
+"	\ },
+"	\})
 call dein#add('Shougo/neocomplete.vim')
-call dein#add('tpope/vim-dispatch')
+call dein#add('Shougo/unite.vim')
+"call dein#add('tpope/vim-dispatch')
 call dein#add('scrooloose/syntastic')
 
 "required
@@ -46,103 +47,16 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"{{{neocomplete OmniSharp
-"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.cs = '.*[^=\);]'
-"neocomplete OmniSharp end}}}
 
 "}}}
+
+
+
 "#####表示設定#####
 "---カラー設定{{{
 syntax on
-set t_Co=256
 set background=dark
-colorscheme solarized
-"let g:solarized_termcolors=256
+colorscheme hybrid
 "}}}
 
 "---音設定{{{
@@ -160,6 +74,10 @@ set showcmd
 set scrolloff=10
 "テキストを折り返さない
 set nowrap
+"編集行の行番号をハイライト
+set cursorline
+hi clear CursorLine
+hi CursorLineNr term=bold cterm=NONE ctermfg=228 ctermbg=NONE
 
 "---検索設定{{{
 "ハイライトサーチを有効にする
@@ -183,10 +101,10 @@ set shiftwidth=4
 set tabstop=4
 "<Tab>入力時の空白の数
 set softtabstop=4
-"不可視文字を表示
-"set list
+"不可視文字をすべて表示
+set list
 "不可視文字をどのように表示するか
-"set listchars=tab:»-,trail:-,extends:»,precedes:«
+set listchars=tab:\ \ ,trail:-,eol:\ ,extends:»,precedes:«
 "}}}
 
 "---ファイル名補完強化{{{
@@ -242,11 +160,45 @@ set noswapfile
 "---インサートモード{{{
 "インサートモード時にC-jでノーマルモードへ
 inoremap <C-j> <esc>
-"括弧を入力したら閉じ括弧もされて中にいる
+"括弧を入力したら閉じ括弧もされて中にいる+Enter押したら改行してインデント
 inoremap [ []<left>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap ( ()<left>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
 inoremap { {}<left>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap " ""<left>
 inoremap ' ''<left>
+"上記の括弧を消す時に補完されたものも消すスクリプト
+"{{{
+function! DeleteParenthesesAdjoin()
+    let pos = col(".") - 1  " カーソルの位置．1からカウント
+    let str = getline(".")  " カーソル行の文字列
+    let parentLList = ["(", "[", "{", "\'", "\""]
+    let parentRList = [")", "]", "}", "\'", "\""]
+    let cnt = 0
+
+    let output = ""
+
+    " カーソルが行末の場合
+    if pos == strlen(str)
+        return "\b"
+    endif
+    for c in parentLList
+        " カーソルの左右が同種の括弧
+        if str[pos-1] == c && str[pos] == parentRList[cnt]
+            call cursor(line("."), pos + 2)
+            let output = "\b"
+            break
+        endif
+        let cnt += 1
+    endfor
+    return output."\b"
+endfunction
+" BackSpaceに割り当て
+inoremap <silent> <BS> <C-R>=DeleteParenthesesAdjoin()<CR>
+"}}}
+
 "}}}
 
 "---ノーマルモード{{{
