@@ -12,23 +12,19 @@ repo = 'Shougo/unite.vim'
 repo = 'scrooloose/syntastic'
 hook_add = 'source ~/.vim/userautoload/plugins/plugins-syntastic.vim'
 
-[[plugins]]
-repo = 'mattn/emmet-vim'
-hook_add = 'source ~/.vim/userautoload/plugins/plugins-emmet.vim'
-
 #メモ帳
 [[plugins]]
 repo = 'glidenote/memolist.vim'
 hook_add = 'source ~/.vim/userautoload/plugins/plugins-memolist.vim'
 
-#vimhelpの日本語
+#vimからブラウザを開く
 [[plugins]]
-repo = 'vim-jp/vimdoc-ja'
-
-#TOMLファイルのハイライトシンタックス
-[[plugins]]
-repo = 'cespare/vim-toml'
+repo = 'tyru/open-browser.vim'
 
 [[plugins]]
 repo = 'thinca/vim-singleton'
 hook_add = 'source ~/.vim/userautoload/plugins/plugins-singleton.vim'
+
+#vimhelpの日本語
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'

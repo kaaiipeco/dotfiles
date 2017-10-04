@@ -1,0 +1,61 @@
+[[plugins]]
+#HTMLやCSSを簡単に記述できるようにする
+repo = 'mattn/emmet-vim'
+hook_add = 'source ~/.vim/userautoload/plugins/plugins-emmet.vim'
+on_ft = ['html']
+
+[[plugins]]
+#HTML5のシンタックスハイライト
+repo = 'othree/html5.vim'
+on_ft = ['html']
+
+#TOMLファイルのシンタックスハイライト
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = ['toml']
+
+#javascriptのシンタックスハイライト
+[[plugins]]
+repo = 'othree/yajs.vim'
+on_ft = ['javascript']
+
+#Unity補完の辞書
+#[[plugins]]
+#repo = 'kitao/unity_dict'
+#on_ft = ['javascript']
+
+[[plugins]]
+#Markdownのシンタックスハイライト
+repo = 'rcmdnk/vim-markdown'
+on_ft = ['markdown', 'md']
+hook_source = '''
+    let g:vim_markdown_folding_disabled = 1
+'''
+
+[[plugins]]
+# Markdownのプレビュー
+repo = 'kannokanno/previm'
+on_ft = ['markdown']
+depends = ['open-browser.vim'] # plugins.toml
+hook_add = 'source ~/.vim/userautoload/plugins/plugins-previm.vim'
+
+#omniSharp ローカルサーバー起動管理を自動化
+[[plugins]]
+repo = 'tpope/vim-dispatch'
+on_ft = ['cs', 'csi', 'csx']
+
+[[plugins]]
+#C#補完
+repo = 'OmniSharp/omnisharp-vim' # ~/.vim/userautoload/plugins/plugins-neocomplete.vim にも記述
+#depends = 'vim-dispatch'
+on_ft = ['cs', 'csi', 'csx']
+	[plugins.build]
+	windows = 'msbuild server/OmniSharp.sln'
+	mac = 'xbuild server/OmniSharp.sln'
+	unix = 'xbuild server/OmniSharp.sln'
+
+#C#のシンタックスハイライト
+[[plugins]]
+repo = 'OrangeT/vim-csharp'
+on_ft = ['cs', 'csi', 'csx']
+
