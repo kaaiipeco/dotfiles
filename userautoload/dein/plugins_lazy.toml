@@ -1,4 +1,12 @@
 [[plugins]]
+repo = 'Shougo/neosnippet.vim'
+depends = 'neosnippet-snippets'
+hook_add = 'source ~/.vim/userautoload/plugins/plugins-neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
 #HTMLやCSSを簡単に記述できるようにする
 repo = 'mattn/emmet-vim'
 hook_add = 'source ~/.vim/userautoload/plugins/plugins-emmet.vim'
@@ -47,7 +55,6 @@ on_ft = ['cs', 'csi', 'csx']
 [[plugins]]
 #C#補完
 repo = 'OmniSharp/omnisharp-vim' # ~/.vim/userautoload/plugins/plugins-neocomplete.vim にも記述
-#depends = 'vim-dispatch'
 on_ft = ['cs', 'csi', 'csx']
 	[plugins.build]
 	windows = 'msbuild server/OmniSharp.sln'
@@ -58,4 +65,16 @@ on_ft = ['cs', 'csi', 'csx']
 [[plugins]]
 repo = 'OrangeT/vim-csharp'
 on_ft = ['cs', 'csi', 'csx']
+
+[[plugins]]
+repo = 'Shougo/vimproc'
+	[plugins.build]
+	windows = 'make -f make_mingw32.mak'
+	mac = 'make -f make_mac.mak'
+	unix = 'make -f make_unix.mak'
+
+[[plugins]]
+repo = 'justmao945/vim-clang'
+on_ft = ['cpp']
+hook_add = 'source ~/.vim/userautoload/plugins/plugins-vim-clang.vim'
 

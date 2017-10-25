@@ -1,3 +1,5 @@
+# ~/.vim/userautoload/dein/plugins_lazy.toml
+
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
